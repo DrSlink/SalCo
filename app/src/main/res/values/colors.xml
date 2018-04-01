@@ -7,5 +7,5 @@
     <color name="toolbar_orange">#6a5241</color>
     <color name="colorBackLiteBlue">#becdff</color>
     <color name="colorBackLiteBlue2">#a3b8ff</color>
-    <color name="colorForTollbar">#3F51B5</color>
+    <color name="colorForToolbar">#3F51B5</color>
 </resources>

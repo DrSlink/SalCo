@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SalCo</string>
+    <string name="TIV">Время работы</string>
+    <string name="TIVS">Суммарное время</string>
+    <string name="CS">Текущая зарплата</string>
+    <string name="CSS">Суммарная зарплата</string>
+    <string name="BSW">\u0020 Начать работать \u0020</string>
+    <string name="TC">00ч 00м 00с 000мс</string>
+    <string name="TCS">000ч 00м 00с</string>
+    <string name="SC">000,000р 00к</string>
+</resources>

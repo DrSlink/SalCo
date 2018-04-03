@@ -1,11 +1,19 @@
 <resources>
     <string name="app_name">SalCo</string>
-    <string name="TIV">Время работы</string>
-    <string name="TIVS">Суммарное время</string>
-    <string name="CS">Текущая зарплата</string>
-    <string name="CSS">Суммарная зарплата</string>
+    <string name="time_in_work">Время работы</string>
+    <string name="sum_of_time">Суммарное время</string>
+    <string name="current_salary">Текущая зарплата</string>
+    <string name="sum_of_salary">Суммарная зарплата</string>
     <string name="BSW">\u0020 Начать работать \u0020</string>
-    <string name="TC">00ч 00м 00с 000мс</string>
-    <string name="TCS">000ч 00м 00с</string>
-    <string name="SC">000,000р 00к</string>
+    <string name="time_counter">00ч 00м 00с 000мс</string>
+    <string name="time_counter_sum">000ч 00м 00с</string>
+    <string name="salary_counter">000,000р 00к</string>
+    <string-array name="test_spinner">
+        <item>test1</item>
+        <item>test2</item>
+        <item>test3</item>
+        <item>test4</item>
+        <item>test5</item>
+        <item>test6</item>
+    </string-array>
 </resources>

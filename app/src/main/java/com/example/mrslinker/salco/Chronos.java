@@ -2,6 +2,9 @@ package com.example.mrslinker.salco;
 
 import android.content.Context;
 
+import java.util.Locale;
+
+
 /**
  * Created by Mr.Slinker on 11.03.2018.
  */
@@ -10,7 +13,8 @@ public class Chronos implements Runnable {
 
     private static final long MILLIS_TO_MINUTES = 60000;
     private static final long MILLS_TO_HOURS = 3600000;
-    public static final long SALARY_PER_HOUR = 300;
+    // public static final long SALARY_PER_HOUR = 300;
+    private Locale current = Locale.getDefault();
 
     private Context mContext;
     private long mStartTime;
@@ -18,34 +22,34 @@ public class Chronos implements Runnable {
     private long mSumData;
     private long mOldSumData;
 
-    public Chronos(Context context) {
+    Chronos(Context context) {
         mContext = context;
         mSumData = 0;
         mOldSumData = 0;
     }
 
 
-    public Chronos(Context context, long startTime) {
-        this(context);
-        mStartTime = startTime;
-    }
+//    public Chronos(Context context, long startTime) {
+//        this(context);
+//        mStartTime = startTime;
+//    }
 
-    public void start() {
+    void start() {
         mStartTime = System.currentTimeMillis();
         mIsRunning = true;
     }
 
-    public void stop() {
+    void stop() {
         mIsRunning = false;
     }
 
-    public boolean isRunning() {
+    boolean isRunning() {
         return mIsRunning;
     }
 
-    public long getStartTime() {
-        return mStartTime;
-    }
+//    public long getStartTime() {
+//        return mStartTime;
+//    }
 
     @Override
     public void run() {
@@ -79,16 +83,16 @@ public class Chronos implements Runnable {
             sumDollars = sumDollars % 1000;
 
 
-            ((MainActivity) mContext).updateTimerText(String.format("%02dч %02dм %02dс %03dмс"
+            ((MainActivity) mContext).updateTimerText(String.format(current, "%02dч %02dм %02dс %03dмс"
                     , hours, minutes, seconds, millis));
 
-            ((MainActivity) mContext).updateSalaryText(String.format("%03d,%03dp %02dк"
+            ((MainActivity) mContext).updateSalaryText(String.format(current, "%03d,%03dp %02dк"
                     , thousands, dollars, cents));
 
-            ((MainActivity) mContext).updateSumTimerText(String.format("%03dч %02dм %02dс"
+            ((MainActivity) mContext).updateSumTimerText(String.format(current, "%03dч %02dм %02dс"
                     , sumHours, sumMinutes, sumSeconds));
 
-            ((MainActivity) mContext).updateSumSalaryText(String.format("%03d,%03dp %02dк"
+            ((MainActivity) mContext).updateSumSalaryText(String.format(current, "%03d,%03dp %02dк"
                     , sumThousands, sumDollars, sumCents));
 
             //Sleep the thread for a short amount, to prevent high CPU usage!

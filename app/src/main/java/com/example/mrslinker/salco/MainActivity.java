@@ -26,15 +26,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setSupportActionBar((Toolbar)findViewById(R.id.toolbar_menu));
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar_menu));
 
         mContext = this;
 
-        TVTimeCount = (TextView) findViewById(R.id.time_counter);
-        TVSalaryCount = (TextView) findViewById(R.id.salary_counter);
-        TVTimeCountS = (TextView) findViewById(R.id.time_counter_sum);
-        TVSalaryCountS = (TextView) findViewById(R.id.salary_counter_sum);
-        BStartWork = (Button) findViewById(R.id.Start_Working);
+        TVTimeCount = findViewById(R.id.time_counter);
+        TVSalaryCount = findViewById(R.id.salary_counter);
+        TVTimeCountS = findViewById(R.id.time_counter_sum);
+        TVSalaryCountS = findViewById(R.id.salary_counter_sum);
+        BStartWork = findViewById(R.id.Start_Working);
 
         BStartWork.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,13 +45,13 @@ public class MainActivity extends AppCompatActivity {
                     mThreadChrono.start();
                     mChronos.start();
                     updateButtonText("  END WORKING  ");
-                }else if (mChronos != null) {
+                } else {
                     if (mChronos.isRunning()) {
                         mChronos.stop();
                         mThreadChrono.interrupt();
                         mThreadChrono = null;
                         updateButtonText("  START WORKING  ");
-                    } else if (!mChronos.isRunning()){
+                    } else if (!mChronos.isRunning()) {
                         mThreadChrono = new Thread(mChronos);
                         mThreadChrono.start();
                         mChronos.start();

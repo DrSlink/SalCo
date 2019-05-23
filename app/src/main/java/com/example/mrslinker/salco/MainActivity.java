@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,7 +20,44 @@ public class MainActivity extends AppCompatActivity {
     private Context mContext;
     private Chronos mChronos;
     private Thread mThreadChrono;
+    private static final String SUM_DATA = "SUM";
+    private static final String IS_RUNNING = "RUNNING";
+    private static final String START_TIME = "TIME";
+    private static boolean was_started = false;
+    private static long sum_data = 0;
 
+
+    @Override
+    protected void onSaveInstanceState(final Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        if (mChronos != null) {
+            was_started = true;
+            outState.putLong(SUM_DATA, mChronos.getOldSumData());
+            outState.putLong(START_TIME, mChronos.getStartTime());
+            outState.putBoolean(IS_RUNNING, mChronos.isRunning());
+            Log.d("salco", mChronos.getStartTime() + "");
+        }
+    }
+
+    @Override
+    protected void onRestoreInstanceState(final Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        if (was_started) {
+            sum_data = savedInstanceState.getLong(SUM_DATA);
+            mChronos = new Chronos(mContext, sum_data);
+            mThreadChrono = new Thread(mChronos);
+            if (savedInstanceState.getBoolean(IS_RUNNING)) {
+                mThreadChrono.start();
+                mChronos.start(savedInstanceState.getLong(START_TIME));
+                updateButtonText("  END WORKING  ");
+            } else {
+                mChronos.updateUI();
+            }
+            was_started = false;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (mChronos == null) {
-                    mChronos = new Chronos(mContext);
+                    mChronos = new Chronos(mContext, sum_data);
                     mThreadChrono = new Thread(mChronos);
                     mThreadChrono.start();
                     mChronos.start();

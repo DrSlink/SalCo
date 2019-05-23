@@ -17,24 +17,24 @@
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/Sums"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="181dp"
+        android:layout_height="162dp"
         android:background="@drawable/rounded_lite"
         app:layout_constraintBottom_toTopOf="@id/TheMiddle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_menu"
-        app:layout_constraintVertical_bias="0.2">
+        app:layout_constraintVertical_bias="0.0">
 
 
         <TextView
             android:id="@+id/time_in_work_sum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:text="@string/sum_of_time"
             android:textColor="@color/colorAccent"
             android:textSize="16sp"
@@ -48,9 +48,9 @@
             android:id="@+id/time_counter_sum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:text="@string/time_counter_sum"
             android:textColor="@color/colorAccent"
             android:textSize="20sp"
@@ -64,8 +64,8 @@
             android:id="@+id/current_salary_sum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:text="@string/sum_of_salary"
             android:textColor="@color/colorAccent"
             android:textSize="16sp"
@@ -78,15 +78,17 @@
             android:id="@+id/salary_counter_sum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:text="@string/salary_counter"
             android:textColor="@color/colorAccent"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/current_salary_sum" />
+            app:layout_constraintTop_toBottomOf="@+id/current_salary_sum"
+            app:layout_constraintVertical_bias="0.0" />
 
 
     </android.support.constraint.ConstraintLayout>

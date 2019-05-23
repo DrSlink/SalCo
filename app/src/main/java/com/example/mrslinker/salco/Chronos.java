@@ -13,7 +13,7 @@ public class Chronos implements Runnable {
 
     private static final long MILLIS_TO_MINUTES = 60000;
     private static final long MILLS_TO_HOURS = 3600000;
-    // public static final long SALARY_PER_HOUR = 300;
+    private static final long SALARY_PER_HOUR = 300;
     private Locale current = Locale.getDefault();
 
     private Context mContext;
@@ -22,20 +22,39 @@ public class Chronos implements Runnable {
     private long mSumData;
     private long mOldSumData;
 
-    Chronos(Context context) {
-        mContext = context;
-        mSumData = 0;
-        mOldSumData = 0;
+    void updateUI(){
+        int sumSeconds = (int) (mOldSumData / 1000) % 60;
+        int sumMinutes = (int) ((mOldSumData / (MILLIS_TO_MINUTES)) % 60);
+        int sumHours = (int) ((mOldSumData / (MILLS_TO_HOURS)));
+
+        int sumCents = (int) ((mOldSumData * SALARY_PER_HOUR * 100 / MILLS_TO_HOURS));
+        int sumDollars = sumCents / 100;
+        int sumThousands = sumDollars / 1000;
+
+        sumCents = sumCents % 100;
+        sumDollars = sumDollars % 1000;
+
+
+        ((MainActivity) mContext).updateSumTimerText(String.format(current, "%03dч %02dм %02dс"
+                , sumHours, sumMinutes, sumSeconds));
+
+        ((MainActivity) mContext).updateSumSalaryText(String.format(current, "%03d,%03dp %02dк"
+                , sumThousands, sumDollars, sumCents));
     }
 
-
-//    public Chronos(Context context, long startTime) {
-//        this(context);
-//        mStartTime = startTime;
-//    }
+    Chronos(Context context, long sum_data) {
+        mContext = context;
+        mSumData = 0;
+        mOldSumData = sum_data;
+    }
 
     void start() {
         mStartTime = System.currentTimeMillis();
+        mIsRunning = true;
+    }
+
+    void start(long startTime) {
+        mStartTime = startTime;
         mIsRunning = true;
     }
 
@@ -47,9 +66,17 @@ public class Chronos implements Runnable {
         return mIsRunning;
     }
 
-//    public long getStartTime() {
-//        return mStartTime;
+    long getStartTime() {
+        return mStartTime;
+    }
+
+//    void setOldSum(long oldSum){
+//        mOldSumData = oldSum;
 //    }
+
+    long getOldSumData(){
+        return mOldSumData;
+    }
 
     @Override
     public void run() {
@@ -63,7 +90,7 @@ public class Chronos implements Runnable {
             int hours = (int) ((since / (MILLS_TO_HOURS)));
             int millis = (int) since % 1000;
 
-            int cents = (int) ((since * 300 * 100 / MILLS_TO_HOURS));
+            int cents = (int) ((since * SALARY_PER_HOUR * 100 / MILLS_TO_HOURS));
             int dollars = cents / 100;
             int thousands = dollars / 1000;
 
@@ -73,9 +100,8 @@ public class Chronos implements Runnable {
             int sumSeconds = (int) (mSumData / 1000) % 60;
             int sumMinutes = (int) ((mSumData / (MILLIS_TO_MINUTES)) % 60);
             int sumHours = (int) ((mSumData / (MILLS_TO_HOURS)));
-            /*int sumMillis = (int) mSumData % 1000;*/
 
-            int sumCents = (int) ((mSumData * 300 * 100 / MILLS_TO_HOURS));
+            int sumCents = (int) ((mSumData * SALARY_PER_HOUR * 100 / MILLS_TO_HOURS));
             int sumDollars = sumCents / 100;
             int sumThousands = sumDollars / 1000;
 

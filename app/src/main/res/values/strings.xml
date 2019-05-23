@@ -5,6 +5,7 @@
     <string name="current_salary">Current Salary</string>
     <string name="sum_of_salary">Sum of Salary</string>
     <string name="BSW">\u0020 Start working \u0020</string>
+    <string name="SSW">\u0020 Stop working \u0020</string>
     <string name="time_counter">00ч 00м 00с 000мс</string>
     <string name="time_counter_sum">000ч 00м 00с</string>
     <string name="salary_counter">000,000р 00к</string>

@@ -5,6 +5,7 @@
     <string name="current_salary">Поточна зарплата</string>
     <string name="sum_of_salary">Сумарна зарплата</string>
     <string name="BSW">\u0020 Почати працювати \u0020</string>
+    <string name="SSW">\u0020 Закiнчити працювати \u0020</string>
     <string name="time_counter">00ч 00м 00с 000мс</string>
     <string name="time_counter_sum">000ч 00м 00с</string>
     <string name="salary_counter">000,000р 00к</string>

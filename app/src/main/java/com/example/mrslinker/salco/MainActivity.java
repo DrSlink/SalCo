@@ -1,8 +1,8 @@
 package com.example.mrslinker.salco;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     private static final String START_TIME = "TIME";
     private static boolean was_started = false;
     private static long sum_data = 0;
-
 
     @Override
     protected void onSaveInstanceState(final Bundle outState) {
@@ -82,18 +81,18 @@ public class MainActivity extends AppCompatActivity {
                     mThreadChrono = new Thread(mChronos);
                     mThreadChrono.start();
                     mChronos.start();
-                    updateButtonText("  END WORKING  ");
+                    updateButtonText(getString(R.string.SSW));
                 } else {
                     if (mChronos.isRunning()) {
                         mChronos.stop();
                         mThreadChrono.interrupt();
                         mThreadChrono = null;
-                        updateButtonText("  START WORKING  ");
+                        updateButtonText(getString(R.string.BSW));
                     } else if (!mChronos.isRunning()) {
                         mThreadChrono = new Thread(mChronos);
                         mThreadChrono.start();
                         mChronos.start();
-                        updateButtonText("  END WORKING  ");
+                        updateButtonText(getString(R.string.SSW));
                     }
                 }
             }
@@ -149,6 +148,4 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
-
 }

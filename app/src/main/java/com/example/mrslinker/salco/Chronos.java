@@ -4,7 +4,6 @@ import android.content.Context;
 
 import java.util.Locale;
 
-
 /**
  * Created by Mr.Slinker on 11.03.2018.
  */
@@ -22,7 +21,7 @@ public class Chronos implements Runnable {
     private long mSumData;
     private long mOldSumData;
 
-    void updateUI(){
+    void updateUI() {
         int sumSeconds = (int) (mOldSumData / 1000) % 60;
         int sumMinutes = (int) ((mOldSumData / (MILLIS_TO_MINUTES)) % 60);
         int sumHours = (int) ((mOldSumData / (MILLS_TO_HOURS)));
@@ -74,7 +73,7 @@ public class Chronos implements Runnable {
 //        mOldSumData = oldSum;
 //    }
 
-    long getOldSumData(){
+    long getOldSumData() {
         return mOldSumData;
     }
 
